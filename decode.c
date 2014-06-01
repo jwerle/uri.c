@@ -20,14 +20,13 @@ uri_decode (const char *src) {
   char tmp[3];
   char ch = 0;
 
-  // alloc
-  dec = (char *) malloc(0);
-  if (NULL == dec) { return NULL; }
-
   // chars len
   len = strlen(src);
 
-#define push(c) (dec = (char *) realloc(dec, size + 1), dec[size++] = c)
+#define push(c) (                                               \
+    dec = (char *) realloc(dec, (size + 1) * sizeof(char)),     \
+    dec[size++] = c                                             \
+)
 
   // decode
   while (len--) {

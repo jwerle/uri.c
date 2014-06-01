@@ -29,7 +29,10 @@ uri_encode (const char *src) {
   // chars length
   len = strlen(src);
 
-#define push(c) (enc = (char *) realloc(enc, size + 1), enc[size++] = c)
+#define push(c) (                                           \
+    enc = (char *) realloc(enc, (size + 1) * sizeof(char)), \
+    enc[size++] = c                                         \
+)
 
   // encode
   while (len--) {
