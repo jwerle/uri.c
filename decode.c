@@ -23,10 +23,10 @@ uri_decode (const char *src) {
   // chars len
   len = strlen(src);
 
-#define push(c) (                                               \
-    dec = (char *) realloc(dec, (size + 1) * sizeof(char)),     \
-    dec[size++] = c                                             \
-)
+  // alloc
+  dec = (char *) malloc(len);
+
+#define push(c) (dec[size++] = c)
 
   // decode
   while (len--) {
