@@ -76,7 +76,7 @@ uri_encode (const char *src) {
   }
 
   // alloc with probable size
-  enc = (char *) malloc(msize);
+  enc = (char *) malloc(sizeof(char) * msize);
   if (NULL == enc) { return NULL; }
 
   // reset
