@@ -17,4 +17,4 @@ clean:
 	rm -f test
 	rm -f $(OBJS)
 
-.PHONY: clean test valgrind
+.PHONY: clean default valgrind
