@@ -10,7 +10,7 @@ valgrind: test
 	valgrind --leak-check=full --error-exitcode=1 ./$<
 
 test: $(OBJS)
-	$(CC) $^ -Ideps $(CFLAGS) -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
 	rm -f test $(OBJS)
