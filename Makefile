@@ -4,15 +4,17 @@ SRC += $(wildcard deps/*/*.c)
 CFLAGS += -std=c99 -Wall -Ideps
 OBJS = $(SRC:.c=.o)
 
-uri: clean test
+default: test
+	./$<
 
-$(OBJS):
-	$(CC) $(CFLAGS) $(@:.o=.c) -c -o $(@)
+valgrind: test
+	valgrind --leak-check=full --error-exitcode=1 ./$<
 
 test: $(OBJS)
 	$(CC) test.c $(SRC) -Ideps $(CFLAGS) -o test
-	./test
 
 clean:
 	rm -f test
 	rm -f $(OBJS)
+
+.PHONY: clean test valgrind
