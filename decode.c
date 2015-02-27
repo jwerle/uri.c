@@ -24,7 +24,7 @@ uri_decode (const char *src) {
   len = strlen(src);
 
   // alloc
-  dec = (char *) malloc(len);
+  dec = (char *) malloc(len + 1);
 
 #define push(c) (dec[size++] = c)
 
