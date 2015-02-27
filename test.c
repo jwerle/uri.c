@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <assert.h>
 #include <ok/ok.h>
@@ -13,11 +14,13 @@
 #include "uri.h"
 
 #define S(x) # x
-#define t(m, a, b) ({ \
-    char tmp[1024]; \
+#define t(m, a, b) ({                              \
+    char tmp[1024];                                \
     sprintf(tmp, "%s(%s) = %s", S(m), S(a), S(b)); \
-    assert(0 == strcmp(b, (char *) m(a))); \
-    ok(tmp); \
+    char *result = m(a);                           \
+    assert(0 == strcmp(b, result));                \
+    ok(tmp);                                       \
+    free(result);                                  \
 })
 
 int
