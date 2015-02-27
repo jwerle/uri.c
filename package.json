@@ -1,6 +1,6 @@
 {
   "name": "uri",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repo": "littlstar/uri.c",
   "description": "URI Component encoder/decoder",
   "keywords": ["uri", "component", "decode", "encode"],
